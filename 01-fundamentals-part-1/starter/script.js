@@ -62,94 +62,151 @@
 
 
 
-console.log("=== MATH OPERATORS");
+// console.log("=== MATH OPERATORS");
 
-const now = 2037;
-const ageJonas = now - 1991;
-const ageSarah = now - 2018;
-console.log(ageJonas, ageSarah);
+// const now = 2037;
+// const ageJonas = now - 1991;
+// const ageSarah = now - 2018;
+// console.log(ageJonas, ageSarah);
 
-console.log(ageJonas * 2, ageJonas / 10, 2 ** 3);
+// console.log(ageJonas * 2, ageJonas / 10, 2 ** 3);
 
-console.log("Math Operations");
-console.log("Addition");
-console.log("Subtraction");
-console.log("Multiplication");
-console.log("Division");
-console.log("Exponentiation");
+// console.log("Math Operations");
+// console.log("Addition");
+// console.log("Subtraction");
+// console.log("Multiplication");
+// console.log("Division");
+// console.log("Exponentiation");
+
+// const firstName = "Jonas";
+// const lastName = "Doe";
+// console.log(firstName + " " + lastName);
+
+// console.log("Hello " + "World" + "!");
+
+// console.log("=== ASSIGNMENT OPERATORS");
+
+// let x = 10 + 5;
+// console.log("x starts as:", x);
+
+// x += 10;
+// console.log("x starts as:", x);
+
+// x *= 4;
+// console.log("x starts as:", x);
+
+// x /= 2;
+// console.log("x starts as:", x);
+
+// x++;
+// console.log("x starts as:", x);
+
+// x--;
+// console.log("x starts as:", x);
+
+// console.log("=== COMPARISON OPERATORS ===");
+
+// console.log("Age comparison:");
+// console.log(ageJonas > ageSarah);
+// console.log(ageSarah >= 18);
+// console.log(ageJonas < 30);
+
+// console.log("Number comparison:");
+// console.log(25 > 20);
+// console.log(15 > 10);
+// console.log(18 >= 18);
+// console.log(16 <= 15);
+
+// const isFullAge = ageSarah >= 18;
+// console.log("Sarah is adult", isFullAge);
+
+// console.log("Complex comparison:");
+// console.log(now - 1991 > now - 2018);
+
+// let z, y;
+// x = y = 25 - 10 - 5;
+// console.log(x, y);
+
+// const averageAge = (ageJonas + ageSarah) / 2;
+// console.log(ageJonas, ageSarah, averageAge);
+
+// ////////////////////////////////////
+// // Coding Challenge #1 - BMI Calculator
+
+// // Test Data 1
+// const massMark = 78;
+// const heightMark = 1.69;
+// const massJohn = 92;
+// const heightJohn = 1.95;
+
+// // Your code here:
+// // 1. Calculate BMIs
+// // 2. Create markHigherBMI variable
+// // 3. Log results to console
+
+// const BMIMark = massMark / heightMark ** 2;
+// const BMIJohn = massJohn / (heightJohn * heightJohn)
+
+// const markHigherBMI = BMIMark > BMIJohn;
+
+// console.log(BMIMark);
+// console.log(BMIJohn);
+// console.log(markHigherBMI);
+
 
 const firstName = "Jonas";
-const lastName = "Doe";
-console.log(firstName + " " + lastName);
+const job = "teacher";
+const birthYear = 1991;
+const year = 2037;
 
-console.log("Hello " + "World" + "!");
+const jonas = "I'm " + firstName + ", a " + (year - birthYear) + " years old " + job + "!";
+console.log(jonas);
 
-console.log("=== ASSIGNMENT OPERATORS");
+const jonasNew = `I'm ${firstName}, a ${year - birthYear} years old ${job}!`;
+console.log(jonasNew);
 
-let x = 10 + 5;
-console.log("x starts as:", x);
+console.log(`I'm ${2037 - 1991} years old`);
+console.log(`Math works here: ${2 + 3} equals five`);
 
-x += 10;
-console.log("x starts as:", x);
+const age = 13;
 
-x *= 4;
-console.log("x starts as:", x);
+if (age >= 18) {
+  console.log(`Sarah can start a driving license`);
+} else {
+    const yearsLeft = 18 - age;
+  console.log(`Sarah is too young. Wait another ${yearsLeft} years`);
+}
 
-x /= 2;
-console.log("x starts as:", x);
 
-x++;
-console.log("x starts as:", x);
 
-x--;
-console.log("x starts as:", x);
+console.log(Boolean(0));
+console.log(Boolean(undefined));
+console.log(Boolean("Jonas"));
+console.log(Boolean({}));
+console.log(Boolean(""));
 
-console.log("=== COMPARISON OPERATORS ===");
-
-console.log("Age comparison:");
-console.log(ageJonas > ageSarah);
-console.log(ageSarah >= 18);
-console.log(ageJonas < 30);
-
-console.log("Number comparison:");
-console.log(25 > 20);
-console.log(15 > 10);
-console.log(18 >= 18);
-console.log(16 <= 15);
-
-const isFullAge = ageSarah >= 18;
-console.log("Sarah is adult", isFullAge);
-
-console.log("Complex comparison:");
-console.log(now - 1991 > now - 2018);
-
-let z, y;
-x = y = 25 - 10 - 5;
-console.log(x, y);
-
-const averageAge = (ageJonas + ageSarah) / 2;
-console.log(ageJonas, ageSarah, averageAge);
 
 ////////////////////////////////////
-// Coding Challenge #1 - BMI Calculator
+// Coding Challenge #2
 
-// Test Data 1
+// Reuse your BMI calculation from Challenge #1
 const massMark = 78;
 const heightMark = 1.69;
 const massJohn = 92;
 const heightJohn = 1.95;
 
-// Your code here:
-// 1. Calculate BMIs
-// 2. Create markHigherBMI variable
-// 3. Log results to console
-
 const BMIMark = massMark / heightMark ** 2;
-const BMIJohn = massJohn / (heightJohn * heightJohn)
+const BMIJohn = massJohn / (heightJohn * heightJohn);
+console.log(BMIMark, BMIJohn);
 
-const markHigherBMI = BMIMark > BMIJohn;
+// Your if/else statement here:
+// Compare BMIs and create intelligent messages
+// Use template literals for beautiful output
 
-console.log(BMIMark);
-console.log(BMIJohn);
-console.log(markHigherBMI);
+
+if (BMIMark > BMIJohn) {
+  console.log(`Mark's BMI (${BMIMark}) is higher than John's (${BMIJohn})!`);
+} else {
+  console.log(`John's BMI (${BMIJohn}) is higher than Mark's (${BMIMark})!`);
+}
 
