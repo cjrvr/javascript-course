@@ -16,33 +16,33 @@ const checkBtnEl = document.querySelector('.check');
 const againBtnEl = document.querySelector('.again');
 
 // UI Helpers
-function setMessage(text){
-    messageEl.textContent = text;
+function setMessage(text) {
+  messageEl.textContent = text;
 }
 
 function setNumber(value) {
-    numberEl.textContent = value
+  numberEl.textContent = value;
 }
 
 function setScore(value) {
-    scoreEl.textContent = value;
+  scoreEl.textContent = value;
 }
 
 function setHighscore(value) {
-    highscoreEl.textContent = value;
+  highscoreEl.textContent = value;
 }
 
 function setBackground(color) {
-    bodyEl.style.backgroundColor = color;
+  bodyEl.style.backgroundColor = color;
 }
 
 function disablePlay(disabled) {
-    guessInputEl.disabled = disabled;
-    checkBtnEl.disabled = disabled;
+  guessInputEl.disabled = disabled;
+  checkBtnEl.disabled = disabled;
 }
 
 function clearInput() {
-    guessInputEl.value = '';
+  guessInputEl.value = '';
 }
 
 // Game state variables
@@ -52,67 +52,66 @@ let score = START_SCORE;
 let highscore = 0;
 
 function resetGameState() {
-    score = START_SCORE;
-    secretNumber = Math.trunc(Math.random() * 20) + 1;
+  score = START_SCORE;
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
 }
 
 function renderInitialUI() {
-    setMessage('Start guessing...');
-    setNumber('?');
-    setScore(score);
-    clearInput();
-    disablePlay(false);
-    setBackground('')
+  setMessage('Start guessing...');
+  setNumber('?');
+  setScore(score);
+  clearInput();
+  disablePlay(false);
+  setBackground('');
 }
 
 renderInitialUI();
 
 // basic game logic
 
-checkBtnEl.addEventListener('click', function() {
-    const guess = Number(guessInputEl.value);
-    console.log('Players guessed:', guess);
+checkBtnEl.addEventListener('click', function () {
+  const guess = Number(guessInputEl.value);
+  console.log('Players guessed:', guess);
 
+  if (!guess) return setMessage('Please input a number');
 
+  // input validation
+  if (guess < MIN_NUMBER || guess > MAX_NUMBER) {
+    return setMessage(
+      `Number must be between ${MIN_NUMBER} and ${MAX_NUMBER}!`
+    );
+  }
 
-    if (!guess) return setMessage('Please input a number')
-
-    // input validation
-    if (guess < MIN_NUMBER || guess > MAX_NUMBER) {
-        return setMessage(`Number must be between ${MIN_NUMBER} and ${MAX_NUMBER}!`);
-    } 
-
-
-    if (guess === secretNumber) {
-        setMessage(`You have won!!!`);
-        setNumber(secretNumber);
-        setBackground('green');
-        if(score > highscore) {
-            highscore = score;
-            setHighscore(highscore);
-        }
-        disablePlay(true);
-        clearInput('');
-        return;
-    } 
-
-    // wrong guess
-    setMessage(guess > secretNumber ? `Too high!` : `Too low!`);
-    score--;
-    setScore(score);
-
-    if (score < 1) {
-        setMessage(`Game over, Please press Again!`);
-        setNumber(secretNumber);
-        setBackground('red');
-        disablePlay(true);
-        clearInput('');
+  if (guess === secretNumber) {
+    setMessage(`You have won!!!`);
+    setNumber(secretNumber);
+    setBackground('green');
+    if (score > highscore) {
+      highscore = score;
+      setHighscore(highscore);
     }
+    disablePlay(true);
+    clearInput('');
+    return;
+  }
+
+  // wrong guess
+  setMessage(guess > secretNumber ? `Too high!` : `Too low!`);
+  score--;
+  setScore(score);
+
+  if (score < 1) {
+    setMessage(`Game over, Please press Again!`);
+    setNumber(secretNumber);
+    setBackground('red');
+    disablePlay(true);
+    clearInput('');
+  }
 });
 
-againBtnEl.addEventListener('click', function() {
-    resetGameState();
-    renderInitialUI();
+againBtnEl.addEventListener('click', function () {
+  resetGameState();
+  renderInitialUI();
 });
 
 // Enter key submits when possible
