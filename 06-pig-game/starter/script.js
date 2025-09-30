@@ -22,6 +22,8 @@ const btnRoll = document.querySelector('.btn--roll');
 
 const btnHoldEl = document.querySelector('.btn--hold');
 
+const btnNewEl = document.querySelector('.btn--new');
+
 const init = function () {
   scores = [0, 0];
 
@@ -40,6 +42,14 @@ const init = function () {
   current1El.textContent = 0;
 
   diceEl.classList.add('hidden');
+
+  player0El.classList.remove('player--winner');
+
+  player1El.classList.remove('player--winner');
+
+  player0El.classList.add('player--active');
+
+  player1El.classList.remove('player--active');
 };
 
 init();
@@ -63,11 +73,11 @@ btnRoll.addEventListener('click', function () {
 
       console.log(
         `Player 0 active:`,
-        player0El.classList.contains('player---active')
+        player0El.classList.contains('player--active')
       );
       console.log(
         `Player 1 active:`,
-        player1El.classList.contains('player---active')
+        player1El.classList.contains('player--active')
       );
     }
   }
@@ -84,11 +94,25 @@ const switchPlayer = function () {
 };
 
 btnHoldEl.addEventListener('click', function () {
-  if (playing) {
+  if (playing && currentScore > 0) {
     scores[activePlayer] += currentScore;
-
     document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
-    switchPlayer();
+    if (scores[activePlayer] >= 100) {
+      playing = false;
+      diceEl.classList.add('hidden');
+
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.add('player--winner');
+
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.remove('player--active');
+    } else {
+      switchPlayer();
+    }
   }
 });
+
+btnNewEl.addEventListener('click', init);
